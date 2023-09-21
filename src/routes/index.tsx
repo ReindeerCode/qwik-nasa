@@ -1,25 +1,29 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead, RequestEvent } from "@builder.io/qwik-city";
 
-const nasaImageURL = "https://api.nasa.gov/planetary/apod?api_key=";
+// const nasaImageURL = "https://api.nasa.gov/planetary/apod?api_key=";
+// //const DB_NASA_IMAGE_PRIVATE_KEY = {import.meta.env.NASA_IMAGE_PRIVATE_KEY}
 
-interface NasaResponse {
-  date: Date;
-  explanation: String;
-  title: String;
-  url: String;
-}
+export const onGet = (requestEvent: RequestEvent) => {
+  console.log(requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY"));
+};
 
-export default component$(() => {
-  return (
-    <>
-      <h1>Hello</h1>
-    </>
-  );
-});
+// export default component$(() => {
+//   return (
+//     <>
+//       <button
+//         onClick$={() => {
+//           onGet();
+//         }}
+//       >
+//         getENV button
+//       </button>
+//     </>
+//   );
+// });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Qwik Local Host",
   meta: [
     {
       name: "description",
