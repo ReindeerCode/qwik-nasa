@@ -9,9 +9,8 @@ import { ExplanationSelector } from "~/components/nasaImageComponents/nasaData_s
 
 export const useNasaAPI = routeLoader$(async (requestEvent) => {
   const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
-  const res = await fetch(
-    `${URL}${requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY")}`
-  );
+  const nasaKey = requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
+  const res = await fetch(`${URL}${nasaKey}`);
   const nasaData = await res.json();
   return nasaData;
 });
