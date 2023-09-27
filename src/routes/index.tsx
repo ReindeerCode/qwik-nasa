@@ -29,7 +29,13 @@ export default component$(() => {
       <h4>
         Image:{" "}
         <p>
-          <link>{response.value.url}</link>
+          {/* <img src={response.value.url}> */}
+          <img
+            src={response.value.url}
+            alt="Nasa Img of The Day"
+            width="500"
+            height="600"
+          ></img>
         </p>
       </h4>
       <h4>
