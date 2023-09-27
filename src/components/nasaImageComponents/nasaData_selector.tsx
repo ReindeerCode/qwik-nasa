@@ -7,7 +7,7 @@ export const ExplanationSelector = component$(() => {
   const nasaResource = useResource$<NasaObject[]>(async () => {
     const fullKey = import.meta.env.VITE_NASA_FULL_PUBLIC_KEY;
     // const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
-    const dbKey = onGet;
+    
     console.log(URL);
     // const dbKey = onGet;
     // console.log(URL);
@@ -23,7 +23,7 @@ export const ExplanationSelector = component$(() => {
         onRejected={(reason) => <span>error... {reason}</span>}
         onResolved={(response) => (
           <>
-          <h1>nasaData_selector below this line</h1>
+            <h1>nasaData_selector below this line</h1>
             <div>
               {response.explanation}
               {/* {response.map(() => (
@@ -42,6 +42,46 @@ export const ExplanationSelector = component$(() => {
     </>
   );
 });
+
+// export const ExplanationSelector = component$(() => {
+//   const nasaResource = useResource$<NasaObject[]>(async () => {
+//     const fullKey = import.meta.env.VITE_NASA_FULL_PUBLIC_KEY;
+//     // const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
+//     const dbKey = onGet;
+//     console.log(URL);
+//     // const dbKey = onGet;
+//     // console.log(URL);
+//     const result = await fetch(`${fullKey}`);
+//     return result.json();
+//   });
+
+//   return (
+//     <>
+//       <Resource
+//         value={nasaResource}
+//         onPending={() => <span>loading...</span>}
+//         onRejected={(reason) => <span>error... {reason}</span>}
+//         onResolved={(response) => (
+//           <>
+//           <h1>nasaData_selector below this line</h1>
+//             <div>
+//               {response.explanation}
+//               {/* {response.map(() => (
+//                 <div>{pic.explanation}</div>
+//               ))} */}
+//             </div>
+//             <div>
+//               {response.date}
+//               {/* {pics.map((pic) => (
+//               <div>{pic.explanation}</div>
+//             ))} */}
+//             </div>
+//           </>
+//         )}
+//       />
+//     </>
+//   );
+// });
 
 
 // export interface NasaObject {

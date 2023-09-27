@@ -7,20 +7,43 @@ import { ExplanationSelector } from "~/components/nasaImageComponents/nasaData_s
 //   return requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
 // };
 
-export const useNasaAPI = routeLoader$(async(requestEvent) => {
+export const useNasaAPI = routeLoader$(async (requestEvent) => {
   const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
-  const res = await fetch(`${URL}${requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY")}`);
-    const nasaData = await res.json()
+  const res = await fetch(
+    `${URL}${requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY")}`
+  );
+  const nasaData = await res.json();
   return nasaData as NasaData;
-})
+});
 
 export default component$(() => {
-  const signal = useNasaAPI();
+  const response = useNasaAPI();
   return (
     <>
-      <h4>Data: {signal.value.explanation}</h4>
-      <h4>Data: {signal.value.date}</h4>
-      <h4>Data: {signal.value.explanation}</h4>
+      <h1>
+        Title:{" "}
+        <p>
+          <b>{response.value.title}</b>
+        </p>
+      </h1>
+      <h4>
+        Image:{" "}
+        <p>
+          <link>{response.value.url}</link>
+        </p>
+      </h4>
+      <h4>
+        Date:{" "}
+        <p>
+          <b>{response.value.date}</b>
+        </p>
+      </h4>
+      <h4>
+        Explanation:{" "}
+        <p>
+          <b>{response.value.explanation}</b>
+        </p>
+      </h4>
       <ExplanationSelector />
     </>
   );
