@@ -13,13 +13,13 @@ export const useNasaAPI = routeLoader$(async (requestEvent) => {
     `${URL}${requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY")}`
   );
   const nasaData = await res.json();
-  return nasaData as NasaData;
+  return nasaData;
 });
 
 export default component$(() => {
   const response = useNasaAPI();
   return (
-    <>
+    <center>
       <h1>
         Title:{" "}
         <p>
@@ -51,7 +51,7 @@ export default component$(() => {
         </p>
       </h4>
       <ExplanationSelector />
-    </>
+    </center>
   );
 });
 
