@@ -1,11 +1,17 @@
 import { component$ } from "@builder.io/qwik";
-import type { RequestEvent } from "@builder.io/qwik-city";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { ExplanationSelector } from "~/components/nasaImageComponents/nasaData_selector";
 
 // export const onGet = (requestEvent: RequestEvent) => {
 //   return requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
 // };
+
+// export const nasaDataBaseKey = routeLoader$(async (requestEvent) => {
+//   const testingNasaDB = requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
+//   const getKey = await fetch(`${testingNasaDB}`);
+//   const gotDBKey = await getKey.json();
+//   console.log(gotDBKey)
+// });
 
 export const useNasaAPI = routeLoader$(async (requestEvent) => {
   const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
