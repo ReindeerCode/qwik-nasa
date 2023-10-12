@@ -1,5 +1,4 @@
 import { Resource, component$, useResource$ } from "@builder.io/qwik";
-import { onGet } from "~/routes";
 
 //
 
@@ -8,9 +7,9 @@ export const ExplanationSelector = component$(() => {
     const fullKey = import.meta.env.VITE_NASA_FULL_PUBLIC_KEY;
     // const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
 
-    console.log(URL);
-    // const dbKey = onGet;
     // console.log(URL);
+    // // const dbKey = onGet;
+    // // console.log(URL);
     const result = await fetch(`${fullKey}`);
     return result.json();
   });
