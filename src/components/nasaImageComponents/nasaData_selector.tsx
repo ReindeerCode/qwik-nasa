@@ -1,15 +1,13 @@
 import { Resource, component$, useResource$ } from "@builder.io/qwik";
+import { useNasaAPI } from "~/routes";
 
-//
+console.log(useNasaAPI);
 
 export const ExplanationSelector = component$(() => {
   const nasaResource = useResource$<NasaObject[]>(async () => {
     const fullKey = import.meta.env.VITE_NASA_FULL_PUBLIC_KEY;
     // const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
 
-    // console.log(URL);
-    // // const dbKey = onGet;
-    // // console.log(URL);
     const result = await fetch(`${fullKey}`);
     return result.json();
   });

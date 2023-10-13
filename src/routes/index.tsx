@@ -13,6 +13,15 @@ import { ExplanationSelector } from "~/components/nasaImageComponents/nasaData_s
 //   console.log(gotDBKey)
 // });
 
+const useNasaKeyExternal = routeLoader$(async (requestEvent) => {
+  const nasaKeyTest = requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
+  const nasaKeyTestRes = await fetch(`${nasaKeyTest}`);
+  const nasaKeyTestData = await nasaKeyTestRes.json();
+  return nasaKeyTestData;
+});
+
+console.log(useNasaKeyExternal);
+
 export const useNasaAPI = routeLoader$(async (requestEvent) => {
   const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
   const nasaKey = requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
