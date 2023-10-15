@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
-import { ExplanationSelector } from "~/components/nasaImageComponents/nasaData_selector";
+// import { ExplanationSelector } from "~/components/nasaImageComponents/nasaData_selector";
 
 export const useNasaAPI = routeLoader$(async (requestEvent) => {
   const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
@@ -43,7 +43,7 @@ export default component$(() => {
           <b>{response.value.explanation}</b>
         </p>
       </h4>
-      <ExplanationSelector />
+      {/* <ExplanationSelector /> */}
     </center>
   );
 });
