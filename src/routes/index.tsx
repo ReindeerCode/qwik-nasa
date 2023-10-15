@@ -2,26 +2,6 @@ import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { ExplanationSelector } from "~/components/nasaImageComponents/nasaData_selector";
 
-// export const onGet = (requestEvent: RequestEvent) => {
-//   return requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
-// };
-
-// export const nasaDataBaseKey = routeLoader$(async (requestEvent) => {
-//   const testingNasaDB = requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
-//   const getKey = await fetch(`${testingNasaDB}`);
-//   const gotDBKey = await getKey.json();
-//   console.log(gotDBKey)
-// });
-
-const useNasaKeyExternal = routeLoader$(async (requestEvent) => {
-  const nasaKeyTest = requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
-  const nasaKeyTestRes = await fetch(`${nasaKeyTest}`);
-  const nasaKeyTestData = await nasaKeyTestRes.json();
-  return nasaKeyTestData;
-});
-
-console.log(useNasaKeyExternal);
-
 export const useNasaAPI = routeLoader$(async (requestEvent) => {
   const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
   const nasaKey = requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
@@ -43,7 +23,6 @@ export default component$(() => {
       <h4>
         Image:{" "}
         <p>
-          {/* <img src={response.value.url}> */}
           <img
             src={response.value.url}
             alt="Nasa Img of The Day"

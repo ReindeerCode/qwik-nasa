@@ -1,7 +1,4 @@
 import { Resource, component$, useResource$ } from "@builder.io/qwik";
-import { useNasaAPI } from "~/routes";
-
-console.log(useNasaAPI);
 
 export const ExplanationSelector = component$(() => {
   const nasaResource = useResource$<NasaObject[]>(async () => {
