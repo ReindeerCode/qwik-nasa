@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useStore } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { ExplanationSelector } from "~/components/nasaImageComponents/nasaData_selector";
 
@@ -16,13 +16,22 @@ export const useNasaAPI = routeLoader$(async (requestEvent) => {
 
 export default component$(() => {
   const response = useNasaAPI().value;
-  console.log(response.title);
+  // console.log(response.title);
+  const testResponse = {
+    title: response.title,
+    url: response.url,
+    date: response.date
+  };
+  console.log(testResponse);
+  const testResponse2 = useStore({ title: response.title, url: response.url, date:response.date });
+  console.table(testResponse2);
+
   return (
     <center>
       <h1>
         Title:{" "}
         <p>
-          <b>{response.title}</b>
+          <b>{testResponse2.title}</b>
         </p>
       </h1>
       <h4>
