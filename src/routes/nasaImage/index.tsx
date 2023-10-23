@@ -2,11 +2,16 @@ import { component$, useResource$, useStore } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 
 export const useNasaAPI = routeLoader$(async (requestEvent) => {
-  const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
-  const nasaKey = requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
-  const res = await fetch(`${URL}${nasaKey}`);
-  const nasaData = await res.json();
-  return nasaData;
+  try {
+    const URL = import.meta.env.VITE_NASA_IMAGE_PUBLIC_KEY;
+    const nasaKey = requestEvent.env.get("DB_NASA_IMAGE_PRIVATE_KEY");
+    const res = await fetch(`${URL}${nasaKey}`);
+    const nasaData = await res.json();
+    return nasaData;
+    // NEED TO COME BACK TO THIS AND ADD ERROR AND PENDING HANDLING
+  } catch (error) {
+    return error;
+  }
 });
 
 export default component$(() => {
@@ -24,10 +29,12 @@ export default component$(() => {
 
   return (
     <center>
+      {/* MAYBE ADD A MAP TO THIS TO ADD THE BELOW CODE INSTEAD OF HARDCODING. YOU'LL NEED TO DECIDE WHAT TO DO WITH INFO RETURNED BY API THAT YOU DON'T CARE ABOUT */}
       <h1>
         Title:{" "}
         <p>
           <b>{responseTable.title}</b>
+          {/* ADD <SPAN> TO EACH DIV FOR ERROR OR PENDING STATUS */}
         </p>
       </h1>
       <h4>
