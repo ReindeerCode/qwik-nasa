@@ -1,4 +1,4 @@
-import { component$, useResource$, useStore } from "@builder.io/qwik";
+import { component$, useSignal, useStore, $ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 
 export const useNasaAPI = routeLoader$(async (requestEvent) => {
@@ -16,6 +16,15 @@ export const useNasaAPI = routeLoader$(async (requestEvent) => {
 
 export default component$(() => {
   const response = useNasaAPI().value;
+  const hdVisible = useSignal(false);
+  const viewHDButton = useSignal(true);
+  const closeHDButton = useSignal(false);
+
+  const toggleBooleans = $(() => {
+    hdVisible.value = !hdVisible.value;
+    viewHDButton = !viewHDButton;
+    closeHDButton = !closeHDButton;
+  });
 
   const responseTable = useStore({
     date: response.date,
@@ -26,7 +35,7 @@ export default component$(() => {
     title: response.title,
     url: response.url,
   });
-
+  // working on changing the state of the HD image - goal is to toggle the See HD Button with Close HD Button depending on if HD img is shown
   return (
     <center>
       {/* MAYBE ADD A MAP TO THIS TO ADD THE BELOW CODE INSTEAD OF HARDCODING. YOU'LL NEED TO DECIDE WHAT TO DO WITH INFO RETURNED BY API THAT YOU DON'T CARE ABOUT */}
@@ -38,7 +47,17 @@ export default component$(() => {
         </p>
       </h1>
       <h4>
-        Image / HD Image:{" "}
+        SD Image / HD Image:{" "}
+        {viewHDButton.value && (
+          <button onClick$={() => (hdVisible.value = !hdVisible.value)}>
+            Click Here To See HD{" "}
+          </button>
+        )}
+        {closeHDButton.value && (
+          <button onClick$={() => (hdVisible.value = !hdVisible.value)}>
+            Click Here To Close HD{" "}
+          </button>
+        )}
         <p>
           <img
             src={responseTable.url}
@@ -46,12 +65,15 @@ export default component$(() => {
             width="500"
             height="600"
           ></img>
-          <img
-            src={responseTable.hdurl}
-            alt="Nasa Img of The Day"
-            width="500"
-            height="600"
-          ></img>
+
+          {hdVisible.value && (
+            <img
+              src={responseTable.hdurl}
+              alt="Nasa HD Img of The Day"
+              width="500"
+              height="600"
+            ></img>
+          )}
         </p>
       </h4>
       <h4>
