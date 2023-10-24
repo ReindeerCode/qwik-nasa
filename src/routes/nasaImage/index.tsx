@@ -45,12 +45,22 @@ export default component$(() => {
       <h4>
         SD Image / HD Image:{" "}
         {booleans.viewHDButton && (
-          <button onClick$={() => (booleans.hdVisible = !booleans.hdVisible)}>
+          <button
+            onClick$={() =>
+              (booleans.hdVisible = !booleans.hdVisible) &&
+              (booleans.viewHDButton = !booleans.viewHDButton)
+            }
+          >
             Click Here To See HD{" "}
           </button>
         )}
         {booleans.hdVisible && (
-          <button onClick$={() => (booleans.hdVisible = !booleans.hdVisible)}>
+          <button
+            onClick$={() =>
+              (booleans.viewHDButton = !booleans.viewHDButton) &&
+              (booleans.hdVisible = !booleans.hdVisible)
+            }
+          >
             Click Here To Close HD{" "}
           </button>
         )}
