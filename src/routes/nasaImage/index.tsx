@@ -16,14 +16,10 @@ export const useNasaAPI = routeLoader$(async (requestEvent) => {
 
 export default component$(() => {
   const response = useNasaAPI().value;
-  const hdVisible = useSignal(false);
-  const viewHDButton = useSignal(true);
-  const closeHDButton = useSignal(false);
 
-  const toggleBooleans = $(() => {
-    hdVisible.value = !hdVisible.value;
-    viewHDButton = !viewHDButton;
-    closeHDButton = !closeHDButton;
+  const booleans = useStore({
+    hdVisible: false,
+    viewHDButton: true,
   });
 
   const responseTable = useStore({
@@ -48,13 +44,13 @@ export default component$(() => {
       </h1>
       <h4>
         SD Image / HD Image:{" "}
-        {viewHDButton.value && (
-          <button onClick$={() => (hdVisible.value = !hdVisible.value)}>
+        {booleans.viewHDButton && (
+          <button onClick$={() => (booleans.hdVisible = !booleans.hdVisible)}>
             Click Here To See HD{" "}
           </button>
         )}
-        {closeHDButton.value && (
-          <button onClick$={() => (hdVisible.value = !hdVisible.value)}>
+        {booleans.hdVisible && (
+          <button onClick$={() => (booleans.hdVisible = !booleans.hdVisible)}>
             Click Here To Close HD{" "}
           </button>
         )}
@@ -66,7 +62,7 @@ export default component$(() => {
             height="600"
           ></img>
 
-          {hdVisible.value && (
+          {booleans.hdVisible && (
             <img
               src={responseTable.hdurl}
               alt="Nasa HD Img of The Day"
