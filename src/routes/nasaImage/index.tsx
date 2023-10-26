@@ -17,7 +17,7 @@ export const useNasaAPI = routeLoader$(async (requestEvent) => {
 export default component$(() => {
   const response = useNasaAPI().value;
 
-  const booleans = useStore({
+  const hdImageBooleans = useStore({
     hdVisible: false,
     viewHDButton: true,
   });
@@ -44,21 +44,21 @@ export default component$(() => {
       </h1>
       <h4>
         SD Image / HD Image:{" "}
-        {booleans.viewHDButton && (
+        {hdImageBooleans.viewHDButton && (
           <button
             onClick$={() =>
-              (booleans.hdVisible = !booleans.hdVisible) &&
-              (booleans.viewHDButton = !booleans.viewHDButton)
+              (hdImageBooleans.hdVisible = !hdImageBooleans.hdVisible) &&
+              (hdImageBooleans.viewHDButton = !hdImageBooleans.viewHDButton)
             }
           >
             Click Here To See HD{" "}
           </button>
         )}
-        {booleans.hdVisible && (
+        {hdImageBooleans.hdVisible && (
           <button
             onClick$={() =>
-              (booleans.viewHDButton = !booleans.viewHDButton) &&
-              (booleans.hdVisible = !booleans.hdVisible)
+              (hdImageBooleans.viewHDButton = !hdImageBooleans.viewHDButton) &&
+              (hdImageBooleans.hdVisible = !hdImageBooleans.hdVisible)
             }
           >
             Click Here To Close HD{" "}
@@ -72,7 +72,7 @@ export default component$(() => {
             height="600"
           ></img>
 
-          {booleans.hdVisible && (
+          {hdImageBooleans.hdVisible && (
             <img
               src={responseTable.hdurl}
               alt="Nasa HD Img of The Day"
@@ -94,6 +94,7 @@ export default component$(() => {
           <b>{responseTable.explanation}</b>
         </p>
       </h4>
+      <button>Click Here To Save Todays Nasa News to DB</button>
     </center>
   );
 });
