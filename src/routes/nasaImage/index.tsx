@@ -31,7 +31,7 @@ export default component$(() => {
     title: response.title,
     url: response.url,
   });
-  // working on changing the state of the HD image - goal is to toggle the See HD Button with Close HD Button depending on if HD img is shown
+  
   return (
     <center>
       {/* MAYBE ADD A MAP TO THIS TO ADD THE BELOW CODE INSTEAD OF HARDCODING. YOU'LL NEED TO DECIDE WHAT TO DO WITH INFO RETURNED BY API THAT YOU DON'T CARE ABOUT */}
@@ -67,7 +67,7 @@ export default component$(() => {
         <p>
           <img
             src={responseTable.url}
-            alt="Nasa Img of The Day"
+            alt="Nasa Img of The Day."
             width="500"
             height="600"
           ></img>
