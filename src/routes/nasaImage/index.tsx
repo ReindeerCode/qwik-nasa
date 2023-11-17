@@ -22,7 +22,9 @@ export default component$(() => {
     viewHDButton: true,
   });
 
+  
   const responseTable = useStore({
+    copyright: response.copyright,
     date: response.date,
     explanation: response.explanation,
     hdurl: response.hdurl,
@@ -31,7 +33,7 @@ export default component$(() => {
     title: response.title,
     url: response.url,
   });
-  
+
   return (
     <center>
       {/* MAYBE ADD A MAP TO THIS TO ADD THE BELOW CODE INSTEAD OF HARDCODING. YOU'LL NEED TO DECIDE WHAT TO DO WITH INFO RETURNED BY API THAT YOU DON'T CARE ABOUT */}
@@ -39,6 +41,13 @@ export default component$(() => {
         Title:{" "}
         <p>
           <b>{responseTable.title}</b>
+          {/* ADD <SPAN> TO EACH DIV FOR ERROR OR PENDING STATUS */}
+        </p>
+      </h1>
+      <h1>
+        Copyright:{" "}
+        <p>
+          <b>{responseTable.copyright}</b>
           {/* ADD <SPAN> TO EACH DIV FOR ERROR OR PENDING STATUS */}
         </p>
       </h1>
@@ -100,7 +109,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Qwik Local Host",
+  title: "Nasa News",
   meta: [
     {
       name: "description",

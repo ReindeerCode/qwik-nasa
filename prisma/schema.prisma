@@ -10,8 +10,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Nasa {
+  id    String     @id @default(auto()) @map("_id") @db.ObjectId
+  copyright String  @unique
+  date String  @unique
+  explanation String  @unique
+  hdurl String  @unique
+  media_type String  @unique
+  service_version String  @unique
+  title String  @unique
+  url String  @unique
 }
+
