@@ -1,13 +1,13 @@
 export const nasaSeedData = [
   {
-    copyright: "Katarzyna Kaczmarczyk",
-    date: "2023-11-16",
+    copyright: "\nMehmet Ergün\n",
+    date: "2023-11-19",
     explanation:
-      "Venus now appears as Earth's brilliant morning star, shining above the southeastern horizon before dawn. For early morning risers, the silvery celestial beacon rose predawn in a close pairing with a waning crescent Moon on Thursday, November 9. But from some northern locations, the Moon was seen to occult or pass in front of Venus. From much of Europe, the lunar occultation could be viewed in daylight skies. This time series composite follows the daytime approach of Moon and morning star in blue skies from Warsaw, Poland. The progression of eight sharp telescopic snapshots, made between 10:56am and 10:58am local time, runs from left to right, when Venus winked out behind the bright lunar limb.",
-    hdurl: "https://apod.nasa.gov/apod/image/2311/Katarzyna20.jpg",
+      "That's no sunspot. It's the International Space Station (ISS) caught passing in front of the Sun. Sunspots, individually, have a dark central umbra, a lighter surrounding penumbra, and no Dragon capsules attached.  By contrast, the ISS is a complex and multi-spired mechanism, one of the largest and most complicated spacecraft ever created by humanity.  Also, sunspots circle the Sun, whereas the ISS orbits the Earth.  Transiting the Sun is not very unusual for the ISS, which orbits the Earth about every 90 minutes, but getting one's location, timing and equipment just right for a great image is rare.  The featured picture combined three images all taken in 2021 from the same location and at nearly the same time. One image -- overexposed -- captured the faint prominences seen across the top of the Sun, a second image -- underexposed -- captured the complex texture of the Sun's chromosphere, while the third image -- the hardest to get -- captured the space station as it shot across the Sun in a fraction of a second.  Close inspection of the space station's silhouette even reveals a docked Dragon Crew capsule.   Follow APOD on Instagram in: Arabic, English, Persian, Portuguese, and Taiwanese",
+    hdurl: "https://apod.nasa.gov/apod/image/2311/IssSun_Ergun_1752.jpg",
     media_type: "image",
     service_version: "v1",
-    title: "Daytime Moon Meets Morning Star",
-    url: "https://apod.nasa.gov/apod/image/2311/Katarzyna20_1024.jpg",
+    title: "Space Station, Solar Prominences, Sun",
+    url: "https://apod.nasa.gov/apod/image/2311/IssSun_Ergun_960.jpg",
   },
 ];
